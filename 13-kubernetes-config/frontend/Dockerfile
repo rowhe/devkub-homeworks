@@ -11,6 +11,8 @@ RUN npm i
 
 ADD . /app
 
+ENV NODE_OPTIONS=--openssl-legacy-provider
+RUN npx browserslist@latest --update-db
 RUN npm run build && rm -rf /app/node_modules
 
 FROM nginx:latest

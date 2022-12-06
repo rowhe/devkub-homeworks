@@ -2,12 +2,14 @@ version: "3.7"
 
 services:
   frontend:
-    build: ./frontend
+    image: rowhe/netology:dz131_front_app
+#    build: ./frontend
     ports:
       - 8000:80
 
   backend:
-    build: ./backend
+    image: rowhe/netology:dz131_back_app
+#    build: ./backend
     links:
       - db
     ports:
