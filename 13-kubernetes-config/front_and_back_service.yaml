@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: front-and-back-service
-    labels:
-      app: front-and-back
+  name: front-and-back-
+  labels:
+    app: front-and-back
 spec:
   type: NodePort
   ports:
