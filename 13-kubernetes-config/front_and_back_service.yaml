@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: front-and-back-service
     labels:
-    app: front-and-back
+      app: front-and-back
 spec:
   type: NodePort
   ports:
