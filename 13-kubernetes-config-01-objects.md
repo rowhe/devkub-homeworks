@@ -1,6 +1,30 @@
 # Домашнее задание к занятию "13.1 контейнеры, поды, deployment, statefulset, services, endpoints"
 Настроив кластер, подготовьте приложение к запуску в нём. Приложение стандартное: бекенд, фронтенд, база данных. Его можно найти в папке 13-kubernetes-config.
 
+* Немного исправляем [Dockerfile](13-kubernetes-config/frontend/Dockerfile), добавляем:
+```text
+ENV NODE_OPTIONS=--openssl-legacy-provider
+RUN npx browserslist@latest --update-db
+```
+
+* Собираем образы приложений и пушим их на _hub.docker.io_ :
+```shell
+cd /devkub-homeworks/13-kubernetes-config/frontapp
+docker build -t rowhe/netology:dz131_front_app .
+...
+docker push rowhe/netology:dz131_front_app
+...
+cd ../backend
+docker build -t rowhe/netology:dz131_back_app .
+...
+docker push rowhe/netology:dz131_back_app
+...
+```
+
+* Проверяем, что все загрузилось
+
+* ![images](img/img_31.png)
+
 ## Задание 1: подготовить тестовый конфиг для запуска приложения
 Для начала следует подготовить запуск приложения в stage окружении с простыми настройками. Требования:
 * под содержит в себе 2 контейнера — фронтенд, бекенд;
