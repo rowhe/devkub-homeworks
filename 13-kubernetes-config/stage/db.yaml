@@ -62,5 +62,5 @@ spec:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
   nfs:
-    server: 10.0.2.15
+    server: 10.0.0.20
     path: /home/nfs
