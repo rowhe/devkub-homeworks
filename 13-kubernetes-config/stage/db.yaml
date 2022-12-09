@@ -2,20 +2,20 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: pgsql
+  name: pg
 spec:
   serviceName: pg-svc
   selector:
     matchLabels:
-      app: pgsql
+      app: pg
   replicas: 1
   template:
     metadata:
       labels:
-        app: pgsql
+        app: pg
     spec:
       containers:
-        - name: pgsql-db
+        - name: pg
           image: postgres:latest
           volumeMounts:
             - name: pg-pvc
@@ -30,7 +30,9 @@ spec:
     - metadata:
         name: pg-pvc
       spec:
-        accessModes: ["ReadWriteMany"]
+        storageClassName: "nfs"
+        accessModes:
+          - ReadWriteOnce
         resources:
           requests:
             storage: 1Gi
@@ -42,25 +44,9 @@ metadata:
   name: pg-svc
 spec:
   selector:
-    app: pgsql
+    app: pg
   type: LoadBalancer
   ports:
     - port: 5432
       targetPort: 5432
 
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: pg-pv
-  labels:
-    type: local
-spec:
-  capacity:
-    storage: 1Gi
-  accessModes:
-    - ReadWriteMany
-  persistentVolumeReclaimPolicy: Retain
-  nfs:
-    server: 10.0.0.20
-    path: /home/nfs
