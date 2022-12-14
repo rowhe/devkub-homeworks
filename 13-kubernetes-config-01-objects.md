@@ -392,6 +392,7 @@ service/backend created
 statefulset.apps/postgres created
 service/db created
 ```
+
 <details>
 <summary>Лог</summary>
 
