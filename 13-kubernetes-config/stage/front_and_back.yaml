@@ -16,12 +16,12 @@ spec:
       containers:
       - name: front
         image: rowhe/netology:dz131_front_app
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
       - name: back
         image: rowhe/netology:dz131_back_app
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 9000
 ---
@@ -42,7 +42,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: back
+  name: backend
 spec:
   type: NodePort
   ports:

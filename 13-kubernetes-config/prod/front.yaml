@@ -16,7 +16,7 @@ spec:
       containers:
       - name: front
         image: rowhe/netology:dz131_front_app
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
 
 ---

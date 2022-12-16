@@ -14,9 +14,9 @@ spec:
         app: backend
     spec:
       containers:
-      - name: back
+      - name: backend
         image: rowhe/netology:dz131_back_app
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 9000
 ---
