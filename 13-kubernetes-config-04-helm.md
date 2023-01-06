@@ -127,7 +127,7 @@ Context "kubernetes-admin@cluster.local" modified.
 
   * третью версию в namespace=app2.
 
-   * Переключися в контекст неймспейса _app2_ для запуска другой версии приложения
+   * Переключимся в контекст неймспейса _app2_ для запуска другой версии приложения
    
    
 ```shell
@@ -135,13 +135,13 @@ $ kubectl.exe config set-context --current --namespace=app2
 Context "kubernetes-admin@cluster.local" modified.
 ```
     
-   * Изменим версию приложения установив новые переменные `version` и  `appVersion`
+   * Изменим версию приложения установив новые переменные `version` и  `appVersion` в файле `Chart.yaml`
 
 ```shell
 version=0.1.1
 appVersion=1.16.1
 ```
-   * Теперь установим чарт в нейспейсе _app2_
+   * Теперь установим чарт новой версии в нейспейсе _app2_
 
 ![new_app2](img/img_43.png)
 
